@@ -5,6 +5,7 @@ variable "vsphere_datacenter" {
 
 variable "vsphere_resource_pool" {
   type    = string
+  default = "Automation"
 }
 
 variable "vsphere_host" {
@@ -63,6 +64,7 @@ variable "mac_address" {
 
 variable "disk_label" {
   type    = string
+  default = "System"
 }
 
 variable "disk_size" {
@@ -72,6 +74,7 @@ variable "disk_size" {
 
 variable "host_name" {
   type    = string
+  default = "oraclelinux"
 }
 
 variable "domain" {
@@ -81,7 +84,7 @@ variable "domain" {
 
 variable "ipv4_address" {
   type    = string
-  default = null
+  default = "192.168.0.50"
 }
 
 
