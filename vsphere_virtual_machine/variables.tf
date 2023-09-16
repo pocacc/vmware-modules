@@ -10,7 +10,7 @@ variable "vsphere_resource_pool" {
 
 variable "vsphere_host" {
   type    = string
-  default = "esxi-2696v4.itlabs.local"
+  default = "esxi-e5-2696v4.itlabs.local"
 }
 
 variable "vsphere_datastore" {
