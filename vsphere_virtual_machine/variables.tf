@@ -15,7 +15,7 @@ variable "vsphere_host" {
 
 variable "vsphere_datastore" {
   type    = string
-  default = "Samsung SSD 850 EVO 500 GB"
+  default = "Samsung SSD 850 EVO 500GB"
 }
 
 variable "vsphere_network" {
