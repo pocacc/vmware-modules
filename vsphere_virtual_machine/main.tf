@@ -81,11 +81,7 @@ resource "vsphere_virtual_machine" "vm" {
   }
 
   provisioner "remote-exec" {
-    inline = [
-      "dnf update -y",
-      "dnf upgrade -y",
-      "dnf install httpd -y"
-    ]
+    inline = var.run_once_command_list
   }
 
 }/**/
