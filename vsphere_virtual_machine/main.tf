@@ -70,9 +70,10 @@ resource "vsphere_virtual_machine" "vm" {
           firewall-cmd --permanent --zone=public --add-service=http
           firewall-cmd --reload
           firewall-cmd --list-all --zone=public
-          cat <<EOF | tee index.html\n<html><head><title>Welcome to my test site!</title></head><body>This site is for testing purposes only</body></html>EOF
+          cd /var/www/html
+          
         EOT
-
+#cat <<EOF | tee index.html\n<html><head><title>Welcome to my test site!</title></head><body>This site is for testing purposes only</body></html>EOF
       }
 
       network_interface {
