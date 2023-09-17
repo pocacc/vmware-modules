@@ -64,7 +64,7 @@ resource "vsphere_virtual_machine" "vm" {
         script_text = <<EOT
           dnf update -y
           dnf upgrade -y
-          dnf install httpd -y
+          
           systemctl start httpd
           systemctl enable --now httpd
           firewall-cmd --permanent --zone=public --add-service=http
