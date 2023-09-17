@@ -64,12 +64,12 @@ resource "vsphere_virtual_machine" "vm" {
         script_text = <<EOT
           dnf update -y
           dnf upgrade -y
+          dnf install httpd -y
           systemctl start httpd
           systemctl enable --now httpd
           firewall-cmd --permanent --zone=public --add-service=http
           firewall-cmd --reload
           firewall-cmd --list-all --zone=public
-          rm /var/www/html/index.html
           cat <<EOF | tee index.html\n<html><head><title>Welcome to my test site!</title></head><body>This site is for testing purposes only</body></html>EOF
         EOT
 
