@@ -40,8 +40,6 @@ resource "vsphere_virtual_machine" "vm" {
   memory           = var.memory
   guest_id         = var.guest_id
 
-  //run_once_command_list = var.run_once_command_list
-
   network_interface {
     network_id   = data.vsphere_network.network.id
     adapter_type = data.vsphere_virtual_machine.template.network_interface_types[0]
@@ -63,6 +61,7 @@ resource "vsphere_virtual_machine" "vm" {
       linux_options {
         host_name = var.host_name
         domain    = var.domain
+        #script_text = var.script_text
       }
 
       network_interface {
@@ -73,4 +72,20 @@ resource "vsphere_virtual_machine" "vm" {
       dns_server_list = var.dns_server_list
     }
   }
+
+  connection {
+    type     = "ssh"
+    user     = "root"
+    password = "Pi=3.1415926"
+    host     = var.ipv4_address
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "dnf update -y",
+      "dnf upgrade -y",
+      "dnf install httpd -y"
+    ]
+  }
+
 }/**/
