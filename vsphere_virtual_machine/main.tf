@@ -61,7 +61,13 @@ resource "vsphere_virtual_machine" "vm" {
       linux_options {
         host_name = var.host_name
         domain    = var.domain
-        #script_text = var.script_text
+        script_text = <<EOT
+
+          dnf update -y
+          dnf upgrade -y
+
+        EOT
+
       }
 
       network_interface {
@@ -73,15 +79,6 @@ resource "vsphere_virtual_machine" "vm" {
     }
   }
 
-  connection {
-    type     = "ssh"
-    user     = "root"
-    password = "Pi=3.1415926"
-    host     = var.ipv4_address
-  }
 
-  provisioner "remote-exec" {
-    inline = var.run_once_command_list
-  }
 
 }/**/
